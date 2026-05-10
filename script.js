@@ -57,10 +57,16 @@ btntambah.addEventListener("click", function(){
     tombolEdit.style.cursor = "pointer";
     tombolEdit.onclick = function() {
         let teksBaru = prompt("Edit tugas:", teskTugas);
+        let tanggalBaru = prompt("Edit tanggal (YYYY-MM-DD):", tanggalValue);
+        
         if(teksBaru && teksBaru !== "") {
             teskTugas = teksBaru;
-            spanbaru.innerHTML = teskTugas + " <small>(" + tanggalValue + ")</small>";
         }
+        if(tanggalBaru && tanggalBaru !== "") {
+            tanggalValue = tanggalBaru;
+        }
+        
+        spanbaru.innerHTML = teskTugas + " <small>(" + tanggalValue + ")</small>";
     };
 
     let tombolStatus = document.createElement("button");
