@@ -19,14 +19,6 @@ btntambah.addEventListener("click", function(){
         return;
     }
 
-    if(tanggalValue === "") {
-        let today = new Date();
-        let tahun = today.getFullYear();
-        let bulan = today.getMonth() + 1;
-        let hari = today.getDate();
-        tanggalValue = tahun + "-" + bulan + "-" + hari;
-    }
-
     let listbaru = document.createElement("li");
     let spanbaru = document.createElement("span");
     spanbaru.innerHTML = teskTugas + " <small>(" + tanggalValue + ")</small>";
