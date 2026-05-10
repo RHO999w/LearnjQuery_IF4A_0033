@@ -27,10 +27,18 @@ btntambah.addEventListener("click", function(){
     spanbaru.innerHTML = teskTugas + " <small>(" + tanggalValue + ")</small>";
 
     let tombolHapus = document.createElement("button");
-        tombolHapus.innerHTML = "Hapus";
-        tombolHapus.style.marginLeft = "10px";
-        tombolHapus.onclick = function() {
-        listbaru.remove();
+    tombolHapus.innerHTML = "Hapus";
+    tombolHapus.style.marginLeft = "10px";
+    tombolHapus.style.background = "#ef4444";
+    tombolHapus.style.color = "white";
+    tombolHapus.style.border = "none";
+    tombolHapus.style.padding = "6px 12px";
+    tombolHapus.style.borderRadius = "6px";
+    tombolHapus.style.cursor = "pointer";
+    tombolHapus.onclick = function() {
+        if(confirm("Apakah Anda yakin menghapus task ini?")) {
+            listbaru.remove();
+        }
     };
 
     let tombolEdit = document.createElement("button");
