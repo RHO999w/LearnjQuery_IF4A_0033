@@ -7,10 +7,15 @@ const daftarTugas = document.getElementById("daftarTugas")
 btntambah.addEventListener("click", function(){
     
     let teskTugas = inputTugas.value;
-    let tanggalValue = inputTanggal.value || "Tidak ada tanggal";
+    let tanggalValue = inputTanggal.value;
 
     if(teskTugas === ""){
         alert("Data harus dimasukan!");
+        return;
+    }
+
+    if(!tanggalValue){
+        alert("Tanggal harus diisi!");
         return;
     }
 
@@ -71,7 +76,6 @@ btntambah.addEventListener("click", function(){
         if(tombolStatus.innerHTML === "Progress") {
             tombolStatus.innerHTML = "Done";
             tombolStatus.style.background = "#10b981";
-            listbaru.style.textDecoration = "line-through";
         } else {
             tombolStatus.innerHTML = "Progress";
             tombolStatus.style.background = "#3b82f6";
