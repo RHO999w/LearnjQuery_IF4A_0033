@@ -6,8 +6,8 @@ const daftarTugas = $("#daftarTugas");
 
 btntambah.on("click", function(){
     
-    let teskTugas = inputTugas.val;
-    let tanggalValue = inputTanggal.val;
+    let teskTugas = inputTugas.val();
+    let tanggalValue = inputTanggal.val();
 
     if(teskTugas === ""){
         alert("Data harus dimasukan!");
@@ -21,10 +21,10 @@ btntambah.on("click", function(){
 
     let listbaru = document.createElement("li");
     let spanbaru = document.createElement("span");
-    spanbaru.innerHTML = teskTugas + " <small>(" + tanggalValue + ")</small>";
+    $(spanbaru).html(teskTugas + " <small>(" + tanggalValue + ")</small>");
 
     let tombolHapus = document.createElement("button");
-    tombolHapus.innerHTML = "Hapus";
+    $(tombolHapus).html("Hapus");
     tombolHapus.style.marginLeft = "10px";
     tombolHapus.style.background = "#ef4444";
     tombolHapus.style.color = "white";
@@ -39,14 +39,16 @@ btntambah.on("click", function(){
     };
 
     let tombolEdit = document.createElement("button");
-    tombolEdit.innerHTML = "Edit";
-    tombolEdit.style.marginLeft = "5px";
-    tombolEdit.style.background = "#f59e0b";
-    tombolEdit.style.color = "white";
-    tombolEdit.style.border = "none";
-    tombolEdit.style.padding = "6px 12px";
-    tombolEdit.style.borderRadius = "6px";
-    tombolEdit.style.cursor = "pointer";
+    $(tombolEdit).html("Edit");
+    $(tombolEdit).css({
+    marginLeft: "5px",
+    background: "#f59e0b",
+    color: "white",
+    border: "none",
+    padding: "6px 12px",
+    borderRadius: "6px",
+    cursor: "pointer"
+    });
     tombolEdit.onclick = function() {
         let teksBaru = prompt("Edit tugas:", teskTugas);
         let tanggalBaru = prompt("Edit tanggal (YYYY-MM-DD):", tanggalValue);
@@ -61,18 +63,20 @@ btntambah.on("click", function(){
     };
 
     let tombolStatus = document.createElement("button");
-    tombolStatus.innerHTML = "Progress";
-    tombolStatus.style.marginLeft = "5px";
-    tombolStatus.style.background = "#3b82f6";
-    tombolStatus.style.color = "white";
-    tombolStatus.style.border = "none";
-    tombolStatus.style.padding = "6px 12px";
-    tombolStatus.style.borderRadius = "6px";
-    tombolStatus.style.cursor = "pointer";
+    $(tombolStatus).html("Progress");
+    $(tombolStatus).css({
+    marginLeft: "5px",
+    background: "#3b82f6",
+    color: "white",
+    border: "none",
+    padding: "6px 12px",
+    borderRadius: "6px",
+    cursor: "pointer"
+    });
     tombolStatus.onclick = function() {
-        if(tombolStatus.innerHTML === "Progress") {
-            tombolStatus.innerHTML = "Done";
-            tombolStatus.style.background = "#10b981";
+        if($(tombolStatus).html() === "Progress") {
+           $(tombolStatus).html("Done");
+           $(tombolStatus).css("background", "#10b981");
         } else {
             tombolStatus.innerHTML = "Progress";
             tombolStatus.style.background = "#3b82f6";
@@ -86,16 +90,15 @@ btntambah.on("click", function(){
     listbaru.appendChild(tombolHapus);
     daftarTugas.appendChild(listbaru);
 
-    const warnabaru = document.querySelectorAll("li");
-    warnabaru.forEach((item, index) => {
-        if(index % 2 === 0){
-            item.style.color = "brown";
-        } else {
-            item.style.color = "black";
-        }
+    $("li").each(function(index) {
+    if(index % 2 === 0){
+        $(this).css("color", "brown");
+    } else {
+        $(this).css("color", "black");
+    }
     });
 
-    inputTugas.val = "";
-    inputTanggal.val = "";
+    inputTugas.val() = "";
+    inputTanggal.val() = "";
 
 });
