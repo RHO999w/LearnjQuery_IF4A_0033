@@ -4,10 +4,10 @@ const inputTanggal = $("#inputTanggal");
 const btntambah = $("#btnTambah");
 const daftarTugas = $("#daftarTugas");
 
-btntambah.addEventListener("click", function(){
+btntambah.on("click", function(){
     
-    let teskTugas = inputTugas.value;
-    let tanggalValue = inputTanggal.value;
+    let teskTugas = inputTugas.val;
+    let tanggalValue = inputTanggal.val;
 
     if(teskTugas === ""){
         alert("Data harus dimasukan!");
@@ -95,7 +95,7 @@ btntambah.addEventListener("click", function(){
         }
     });
 
-    inputTugas.value = "";
-    inputTanggal.value = "";
+    inputTugas.val = "";
+    inputTanggal.val = "";
 
 });
