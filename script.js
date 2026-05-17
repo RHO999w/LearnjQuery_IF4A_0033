@@ -59,7 +59,7 @@ btntambah.on("click", function(){
             tanggalValue = tanggalBaru;
         }
         
-        spanbaru.innerHTML = teskTugas + " <small>(" + tanggalValue + ")</small>";
+        $(spanbaru).html(teskTugas + " <small>(" + tanggalValue + ")</small>");
     };
 
     let tombolStatus = document.createElement("button");
@@ -74,13 +74,13 @@ btntambah.on("click", function(){
     cursor: "pointer"
     });
     tombolStatus.onclick = function() {
-        if($(tombolStatus).html() === "Progress") {
-           $(tombolStatus).html("Done");
+        if($(tombolStatus).text() === "Progress") {
+           $(tombolStatus).text("Done");
            $(tombolStatus).css("background", "#10b981");
         } else {
-            tombolStatus.innerHTML = "Progress";
-            tombolStatus.style.background = "#3b82f6";
-            listbaru.style.textDecoration = "none";
+            $(tombolStatus).text("Progress");
+            $(tombolStatus).css("background", "#3b82f6");
+            $(listbaru).css("text-decoration", "none");
         }
     };
 
@@ -88,7 +88,7 @@ btntambah.on("click", function(){
     listbaru.appendChild(tombolStatus);
     listbaru.appendChild(tombolEdit);
     listbaru.appendChild(tombolHapus);
-    daftarTugas.appendChild(listbaru);
+    daftarTugas.append(listbaru);
 
     $("li").each(function(index) {
     if(index % 2 === 0){
@@ -98,7 +98,7 @@ btntambah.on("click", function(){
     }
     });
 
-    inputTugas.val() = "";
-    inputTanggal.val() = "";
+    inputTugas.val("");
+    inputTanggal.val("");
 
 });
